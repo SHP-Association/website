@@ -1,6 +1,6 @@
 <template>
-  <form class="contact-form" @submit.prevent="handleSubmit">
-    <div class="form-row">
+  <form class="contact-form flex flex-col gap-5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 md:p-8 rounded-2xl shadow-xl transition-colors" @submit.prevent="handleSubmit">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       <BaseInput
         id="name"
         v-model="form.name"
@@ -22,7 +22,7 @@
       />
     </div>
 
-    <div class="form-row">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       <BaseInput
         id="company"
         v-model="form.company"
@@ -54,7 +54,7 @@
       @blur="validateMinLength('message', form.message, 15)"
     />
 
-    <div class="form-actions">
+    <div class="pt-2">
       <BaseButton
         type="submit"
         variant="primary"
@@ -133,55 +133,50 @@ const handleSubmit = async () => {
   loading.value = true;
   trackEvent('Contact Form Started', { subject: form.subject });
 
+  const webhookUrl = import.meta.env.VITE_GOOGLE_SHEET_WEBHOOK_URL;
+
   try {
-    // Simulate async API network call
-    await new Promise((resolve) => setTimeout(resolve, 1200));
+    if (webhookUrl) {
+      await fetch(webhookUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          subject: form.subject,
+          message: form.message,
+          source: 'Contact Page Form',
+          timestamp: new Date().toISOString()
+        })
+      });
+    } else {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
 
     trackEvent('Contact Form Submitted', { subject: form.subject });
-    toast.title = 'Inquiry Sent Successfully!';
-    toast.message = 'Thank you for reaching out. Our engineering director will respond within 24 hours.';
+
     toast.type = 'success';
+    toast.title = 'Inquiry Submitted Successfully';
+    toast.message = 'Thank you for reaching out! A senior engineering director will respond within 4 hours.';
     toast.show = true;
 
-    // Reset Form
     form.name = '';
     form.email = '';
     form.company = '';
     form.subject = '';
     form.message = '';
-  } catch (e) {
-    toast.title = 'Submission Failed';
-    toast.message = 'An error occurred while submitting your message. Please try again or email us directly.';
+  } catch (err) {
+    console.error('Submission error:', err);
     toast.type = 'error';
+    toast.title = 'Submission Error';
+    toast.message = 'An unexpected network error occurred. Please try again or email founder.shp@gmail.com.';
     toast.show = true;
   } finally {
     loading.value = false;
   }
 };
 </script>
-
-<style scoped>
-.contact-form {
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-xl);
-  padding: var(--space-8);
-  box-shadow: var(--shadow-lg);
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-4);
-}
-
-@media (min-width: 640px) {
-  .form-row {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.form-actions {
-  margin-top: var(--space-6);
-}
-</style>

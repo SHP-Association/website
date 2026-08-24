@@ -28,16 +28,20 @@
               v-model="subscriberEmail"
               placeholder="Enter your work email"
               required
-              class="w-full px-3.5 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-white text-xs focus:outline-none focus:border-brand-yellow"
+              :disabled="isSubmitting"
+              class="w-full px-3.5 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-white text-xs focus:outline-none focus:border-brand-yellow disabled:opacity-50"
             />
             <button
               type="submit"
-              class="px-4 py-2 rounded-xl bg-brand-yellow hover:bg-brand-hover text-darkText font-bold text-xs transition-colors shrink-0"
+              :disabled="isSubmitting"
+              class="px-4 py-2 rounded-xl bg-brand-yellow hover:bg-brand-hover text-darkText font-bold text-xs transition-colors shrink-0 disabled:opacity-50 flex items-center gap-1.5"
             >
-              Subscribe
+              <span v-if="isSubmitting" class="w-3 h-3 border-2 border-darkText border-t-transparent rounded-full animate-spin"></span>
+              <span>{{ isSubmitting ? 'Submitting...' : 'Subscribe' }}</span>
             </button>
           </form>
-          <span v-if="subscribed" class="text-[11px] text-emerald-400 font-semibold block mt-1">✓ Thank you for subscribing!</span>
+          <span v-if="subscribed" class="text-[11px] text-emerald-400 font-semibold block mt-1.5">✓ Saved to subscribers list! Thank you.</span>
+          <span v-if="errorMessage" class="text-[11px] text-rose-400 font-semibold block mt-1.5">{{ errorMessage }}</span>
         </div>
       </div>
 
@@ -111,15 +115,47 @@ import { companyData } from '@/data/company';
 import { siteConfig } from '@/config/site.config';
 
 const subscriberEmail = ref('');
+const isSubmitting = ref(false);
 const subscribed = ref(false);
+const errorMessage = ref('');
 
-const handleSubscribe = () => {
-  if (subscriberEmail.value) {
+const handleSubscribe = async () => {
+  if (!subscriberEmail.value) return;
+
+  isSubmitting.value = true;
+  subscribed.value = false;
+  errorMessage.value = '';
+
+  const webhookUrl = import.meta.env.VITE_GOOGLE_SHEET_WEBHOOK_URL;
+
+  try {
+    if (webhookUrl) {
+      // Send subscriber data to Google Apps Script Web App / Webhook
+      await fetch(webhookUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: subscriberEmail.value,
+          source: 'Footer Newsletter Box',
+          timestamp: new Date().toISOString()
+        })
+      });
+    }
+
     subscribed.value = true;
     subscriberEmail.value = '';
+
     setTimeout(() => {
       subscribed.value = false;
-    }, 4000);
+    }, 5000);
+  } catch (err) {
+    console.error('Subscription error:', err);
+    errorMessage.value = 'Subscription failed. Please try again.';
+  } finally {
+    isSubmitting.value = false;
   }
 };
 </script>

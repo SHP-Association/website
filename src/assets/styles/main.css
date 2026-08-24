@@ -1,6 +1,10 @@
 @import './tokens.css';
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Poppins', 'Inter', sans-serif;
+}
+
 /* Tailwind v4 Class-based Dark Mode Variant Definition */
 @custom-variant dark (&:where(.dark, .dark *));
 @variant dark (&:where(.dark, .dark *));
@@ -11,7 +15,7 @@
 }
 
 html {
-  font-family: var(--font-family);
+  font-family: 'Poppins', var(--font-family);
   font-size: 16px;
   color: var(--text-primary);
   background-color: var(--bg-main);
@@ -21,6 +25,7 @@ html {
 }
 
 body {
+  font-family: 'Poppins', var(--font-family);
   min-height: 100vh;
   line-height: 1.6;
   overflow-x: hidden;
@@ -58,12 +63,10 @@ body {
 
 @keyframes pulseGlow {
   0%, 100% {
-    opacity: 0.6;
-    transform: scale(1);
+    box-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
   }
   50% {
-    opacity: 1;
-    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(250, 204, 21, 0.6);
   }
 }
 
@@ -72,86 +75,9 @@ body {
 }
 
 .animate-float-slow {
-  animation: floatSlow 6s ease-in-out infinite;
+  animation: floatSlow 4s ease-in-out infinite;
 }
 
 .animate-pulse-glow {
   animation: pulseGlow 3s ease-in-out infinite;
-}
-
-/* Utility Containers & Layout */
-.container {
-  width: 100%;
-  max-width: var(--container-max-width);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--space-6);
-  padding-right: var(--space-6);
-}
-
-.section-padding {
-  padding-top: var(--space-16);
-  padding-bottom: var(--space-16);
-}
-
-@media (min-width: 1024px) {
-  .section-padding {
-    padding-top: var(--space-24);
-    padding-bottom: var(--space-24);
-  }
-}
-
-/* Section Header Shared Utility */
-.section-header {
-  text-align: center;
-  max-width: 768px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: var(--space-12);
-  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.section-header .tag {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  background-color: var(--brand-yellow-light);
-  color: var(--text-primary);
-  border: 1px solid var(--brand-yellow-border);
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-full);
-  font-size: var(--fs-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: var(--space-4);
-}
-
-.section-header h2 {
-  font-size: var(--fs-3xl);
-  font-weight: 800;
-  color: var(--text-primary);
-  margin-bottom: var(--space-4);
-  letter-spacing: -0.02em;
-}
-
-@media (min-width: 768px) {
-  .section-header h2 {
-    font-size: var(--fs-4xl);
-  }
-}
-
-.section-header p {
-  font-size: var(--fs-lg);
-  color: var(--text-secondary);
-}
-
-/* Accessibility: Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }
