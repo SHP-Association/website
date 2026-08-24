@@ -1,4 +1,4 @@
-import{S as w}from"./useSeoMeta-DPhdCQev.js";import{l as p,d as f,o as r,h,w as v,a as e,c as u,F as y,r as g,t as l,j as _,_ as C}from"./index-B4xJ7IqP.js";/**
+import{S as w}from"./useSeoMeta-CcgXEhD-.js";import{l as p,d as f,o as r,h,w as v,a as e,c as u,F as y,r as g,t as l,j as _,_ as C}from"./index-D24oyYXZ.js";/**
  * @license lucide-vue-next v0.378.0 - ISC
  *
  * This source code is licensed under the ISC license.
