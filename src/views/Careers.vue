@@ -3,14 +3,94 @@
     <SectionContainer>
       <div class="max-w-4xl mx-auto text-center mb-12 animate-fade-in-up">
         <span class="inline-flex items-center gap-2 bg-brand-light dark:bg-zinc-800 border border-brand-border dark:border-zinc-700 px-3.5 py-1.5 rounded-full text-xs font-semibold text-darkText dark:text-zinc-200 mb-4">
-          Engineering Careers
+          Engineering Careers & Recruitment
         </span>
         <h1 class="text-4xl md:text-5xl font-extrabold text-darkText dark:text-white tracking-tight mb-4 leading-tight">
-          Join a Senior Software Engineering Pod Building High-Scale Systems
+          Join a Senior Engineering Pod & Grow Your Career
         </h1>
         <p class="text-lg text-gray-600 dark:text-zinc-300 leading-relaxed">
-          We offer remote flexibility, technical autonomy, and an environment focused on high-quality software craftsmanship.
+          We offer remote flexibility, technical autonomy, competitive compensation, and direct career growth paths.
         </p>
+      </div>
+
+      <!-- Official Recruitment & Social Connect Hub -->
+      <div class="mb-14 p-8 rounded-2xl bg-gradient-to-br from-zinc-900 via-slate-900 to-zinc-950 text-white shadow-2xl border border-zinc-800 relative overflow-hidden">
+        <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10">
+          <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-8">
+            <div>
+              <span class="inline-block bg-brand-yellow text-darkText font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-2">Verified Recruitment Portals</span>
+              <h2 class="text-2xl md:text-3xl font-extrabold text-white">Connect With SHP Technology</h2>
+              <p class="text-zinc-400 text-sm mt-1 max-w-xl">Explore active job listings on Indeed, follow our founder updates on Instagram, and connect with our talent team on LinkedIn & Facebook.</p>
+            </div>
+            <a
+              :href="siteConfig.socials.indeed"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-lg transition-all hover:scale-105 shrink-0"
+            >
+              <span>💼</span>
+              <span>Apply on Indeed (Senior Sales Executive)</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+
+          <!-- Social Tracking Links Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <a
+              :href="siteConfig.socials.linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="p-4 rounded-xl bg-zinc-800/80 hover:bg-zinc-800 border border-zinc-700/80 flex items-center gap-3 transition-all hover:-translate-y-0.5 group"
+            >
+              <div class="w-10 h-10 rounded-lg bg-sky-600/20 text-sky-400 flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform">in</div>
+              <div>
+                <strong class="text-white text-sm block group-hover:text-brand-yellow transition-colors">LinkedIn Profile</strong>
+                <span class="text-xs text-zinc-400">@shp-technology</span>
+              </div>
+            </a>
+
+            <a
+              :href="siteConfig.socials.instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="p-4 rounded-xl bg-zinc-800/80 hover:bg-zinc-800 border border-zinc-700/80 flex items-center gap-3 transition-all hover:-translate-y-0.5 group"
+            >
+              <div class="w-10 h-10 rounded-lg bg-pink-600/20 text-pink-400 flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform">📸</div>
+              <div>
+                <strong class="text-white text-sm block group-hover:text-brand-yellow transition-colors">Instagram Feed</strong>
+                <span class="text-xs text-zinc-400">@founder.shp</span>
+              </div>
+            </a>
+
+            <a
+              :href="siteConfig.socials.facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="p-4 rounded-xl bg-zinc-800/80 hover:bg-zinc-800 border border-zinc-700/80 flex items-center gap-3 transition-all hover:-translate-y-0.5 group"
+            >
+              <div class="w-10 h-10 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform">fb</div>
+              <div>
+                <strong class="text-white text-sm block group-hover:text-brand-yellow transition-colors">Facebook Page</strong>
+                <span class="text-xs text-zinc-400">SHP Technology Official</span>
+              </div>
+            </a>
+
+            <a
+              :href="siteConfig.socials.indeed"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="p-4 rounded-xl bg-zinc-800/80 hover:bg-zinc-800 border border-zinc-700/80 flex items-center gap-3 transition-all hover:-translate-y-0.5 group"
+            >
+              <div class="w-10 h-10 rounded-lg bg-indigo-600/20 text-indigo-400 flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform">🎯</div>
+              <div>
+                <strong class="text-white text-sm block group-hover:text-brand-yellow transition-colors">Indeed Portal</strong>
+                <span class="text-xs text-zinc-400">Senior Sales Exec Opening</span>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
 
       <!-- Perks & Benefits Grid -->
@@ -85,12 +165,23 @@
         </BaseCard>
       </div>
 
-      <div class="spontaneous-apply-banner">
+      <div class="spontaneous-apply-banner flex flex-col items-center justify-center text-center">
         <h3>Don't see the right role?</h3>
-        <p>We are always looking for exceptional software engineers, architects, and designers.</p>
-        <BaseButton to="/contact" variant="outline" class="mt-3">
-          Send Us Your Profile
-        </BaseButton>
+        <p class="mb-4">We are always looking for exceptional software engineers, sales executives, and cloud architects.</p>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <BaseButton to="/contact" variant="outline">
+            Send Us Your Profile
+          </BaseButton>
+          <a
+            :href="siteConfig.socials.indeed"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2.5 rounded-xl bg-brand-yellow text-darkText font-bold text-xs hover:bg-brand-hover transition-colors flex items-center gap-1.5"
+          >
+            <span>View Indeed Listings</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
       </div>
     </SectionContainer>
   </div>
@@ -103,11 +194,12 @@ import BaseCard from '@/components/common/BaseCard.vue';
 import BaseBadge from '@/components/common/BaseBadge.vue';
 import BaseButton from '@/components/common/BaseButton.vue';
 import { jobsData, hiringProcessSteps, companyCultureValues } from '@/data/jobs';
+import { siteConfig } from '@/config/site.config';
 import { useSeoMeta } from '@/composables/useSeoMeta';
 
 useSeoMeta({
   title: 'Careers & Open Senior Engineering Roles',
-  description: 'Explore engineering job opportunities at SHP Technology. Learn about our culture, hiring process, remote perks, and competitive packages.'
+  description: 'Explore job opportunities at SHP Technology. View our Indeed portal, LinkedIn, Instagram, and Facebook recruitment channels.'
 });
 
 const activeDept = ref('All');
@@ -263,7 +355,6 @@ const perks = [
   color: var(--text-inverse);
   padding: var(--space-8);
   border-radius: var(--radius-xl);
-  text-align: center;
 }
 
 .spontaneous-apply-banner h3 {

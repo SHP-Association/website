@@ -75,23 +75,23 @@
       <div class="flex flex-col gap-3">
         <h4 class="text-white text-sm font-extrabold uppercase tracking-wider mb-2 flex items-center gap-2">
           <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span>
-          Connect
+          Social & Hiring
         </h4>
-        <a :href="`mailto:${siteConfig.contact.email}`" class="text-zinc-300 hover:text-brand-yellow text-sm transition-all hover:translate-x-1 flex items-center gap-2">
-          <span>📧</span>
-          <span>{{ siteConfig.contact.email }}</span>
-        </a>
-        <a :href="`tel:${siteConfig.contact.phone}`" class="text-zinc-300 hover:text-brand-yellow text-sm transition-all hover:translate-x-1 flex items-center gap-2">
-          <span>📞</span>
-          <span>{{ siteConfig.contact.phone }}</span>
-        </a>
         <a :href="siteConfig.socials.linkedin" target="_blank" rel="noopener noreferrer" class="text-zinc-300 hover:text-brand-yellow text-sm transition-all hover:translate-x-1 flex items-center gap-2">
           <span>🔗</span>
           <span>LinkedIn</span>
         </a>
-        <a :href="siteConfig.socials.github" target="_blank" rel="noopener noreferrer" class="text-zinc-300 hover:text-brand-yellow text-sm transition-all hover:translate-x-1 flex items-center gap-2">
-          <span>💻</span>
-          <span>GitHub</span>
+        <a :href="siteConfig.socials.instagram" target="_blank" rel="noopener noreferrer" class="text-zinc-300 hover:text-brand-yellow text-sm transition-all hover:translate-x-1 flex items-center gap-2">
+          <span>📸</span>
+          <span>Instagram (@founder.shp)</span>
+        </a>
+        <a :href="siteConfig.socials.facebook" target="_blank" rel="noopener noreferrer" class="text-zinc-300 hover:text-brand-yellow text-sm transition-all hover:translate-x-1 flex items-center gap-2">
+          <span>📘</span>
+          <span>Facebook</span>
+        </a>
+        <a :href="siteConfig.socials.indeed" target="_blank" rel="noopener noreferrer" class="text-zinc-300 hover:text-brand-yellow text-sm transition-all hover:translate-x-1 flex items-center gap-2">
+          <span>💼</span>
+          <span>Indeed Jobs</span>
         </a>
       </div>
     </div>
@@ -130,7 +130,6 @@ const handleSubscribe = async () => {
 
   try {
     if (webhookUrl) {
-      // Send subscriber data to Google Apps Script Web App / Webhook
       await fetch(webhookUrl, {
         method: 'POST',
         mode: 'no-cors',
