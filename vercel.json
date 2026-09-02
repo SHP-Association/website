@@ -5,7 +5,7 @@
       "has": [
         {
           "type": "host",
-          "value": "shptech.vercel.app"
+          "value": ".*\\.vercel\\.app"
         }
       ],
       "destination": "https://www.shptechnology.online/$1",
