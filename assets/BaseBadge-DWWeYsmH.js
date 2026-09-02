@@ -1,1 +1,0 @@
-import{C as e,N as t,a as n,g as r,x as i,y as a}from"./index-2vUlLgvs.js";var o=n(a({__name:`BaseBadge`,props:{variant:{default:`yellow`}},setup(n){return(a,o)=>(i(),r(`span`,{class:t([`base-badge`,`badge-${n.variant}`])},[e(a.$slots,`default`,{},void 0,!0)],2))}}),[[`__scopeId`,`data-v-05a46f88`]]);export{o as t};
