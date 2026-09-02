@@ -1,13 +1,9 @@
 {
   "redirects": [
     {
-      "source": "/:path*",
-      "destination": "http://shptechnology.online/:path*",
+      "source": "/(.*)",
+      "destination": "http://shptechnology.online/$1",
       "permanent": true
     }
-  ],
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/index.html" }
   ]
 }
