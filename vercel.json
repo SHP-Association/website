@@ -1,15 +1,6 @@
 {
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "shptech.vercel.app"
-        }
-      ],
-      "destination": "https://www.shptechnology.online/:path*",
-      "permanent": true
-    }
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
   ]
 }
